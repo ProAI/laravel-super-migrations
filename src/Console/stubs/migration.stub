@@ -1,0 +1,18 @@
+<?php
+
+use ProAI\SuperMigrations\Migration;
+
+class DummyClass extends Migration
+{
+    /**
+     * Get table names and related methods for up and down schemas.
+     *
+     * @return void
+     */
+    public function schemas()
+    {
+        return [
+            //
+        ];
+    }
+}
