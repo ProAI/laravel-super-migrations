@@ -1,6 +1,6 @@
 # Laravel Super Migrations
 
-[![Latest Stable Version](https://poser.pugx.org/proai/laravel-super-migrations/v/stable)](https://packagist.org/packages/proailaravel-super-migrations) [![Total Downloads](https://poser.pugx.org/proai/laravel-super-migrations/downloads)](https://packagist.org/packages/proai/laravel-super-migrations) [![Latest Unstable Version](https://poser.pugx.org/proai/laravel-super-migrations/v/unstable)](https://packagist.org/packages/proai/laravel-super-migrations) [![License](https://poser.pugx.org/proai/laravel-super-migrations/license)](https://packagist.org/packages/proai/laravel-super-migrations)
+[![Latest Stable Version](https://poser.pugx.org/proai/laravel-super-migrations/v/stable)](https://packagist.org/packages/proai/laravel-super-migrations) [![Total Downloads](https://poser.pugx.org/proai/laravel-super-migrations/downloads)](https://packagist.org/packages/proai/laravel-super-migrations) [![Latest Unstable Version](https://poser.pugx.org/proai/laravel-super-migrations/v/unstable)](https://packagist.org/packages/proai/laravel-super-migrations) [![License](https://poser.pugx.org/proai/laravel-super-migrations/license)](https://packagist.org/packages/proai/laravel-super-migrations)
 
 This is an extension for the Laravel migrations. It is useful when you have a big database that results in a lot of migration files. This package will help you to reduce the number of migration files and furthermore it will give you a better structure with which you will have all schema updates for a table in one file.
 
