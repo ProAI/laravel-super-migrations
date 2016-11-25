@@ -1,8 +1,8 @@
 {
-    "name": "proai/laravel-pro-migrations",
+    "name": "proai/laravel-super-migrations",
     "description": "This Laravel package is useful for big databases for a better migrations structure.",
     "keywords": ["laravel","migrations","database", "table"],
-    "homepage": "http://github.com/proai/laravel-pro-migrations",
+    "homepage": "http://github.com/proai/laravel-super-migrations",
     "license": "MIT",
     "authors": [
         {
@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ProAI\\ProMigrations\\": "src/"
+            "ProAI\\SuperMigrations\\": "src/"
         }
     },
     "extra": {

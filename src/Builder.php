@@ -1,6 +1,6 @@
 <?php
 
-namespace ProAI\ProMigrations;
+namespace ProAI\SuperMigrations;
 
 class Builder
 {

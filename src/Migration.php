@@ -1,6 +1,6 @@
 <?php
 
-namespace ProAI\ProMigrations;
+namespace ProAI\SuperMigrations;
 
 use Illuminate\Database\Migrations\Migration as BaseMigration;
 
@@ -14,7 +14,7 @@ abstract class Migration extends BaseMigration
     protected $direction;
 
     /**
-     * Get class method names for up and down schemas.
+     * Get table names and related methods for up and down schemas.
      *
      * @return array
      */
@@ -65,7 +65,7 @@ abstract class Migration extends BaseMigration
      * Get an instance of a table schema.
      *
      * @param  string  $name
-     * @return \ProAI\ProMigrations\Migration
+     * @return \ProAI\SuperMigrations\Migration
      */
     protected function getSchemaInstance($name)
     {

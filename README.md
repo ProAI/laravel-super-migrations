@@ -1,6 +1,6 @@
 # Laravel Pro Migrations
 
-[![Latest Stable Version](https://poser.pugx.org/proai/laravel-pro-migrations/v/stable)](https://packagist.org/packages/proailaravel-pro-migrations) [![Total Downloads](https://poser.pugx.org/proai/laravel-pro-migrations/downloads)](https://packagist.org/packages/proai/laravel-pro-migrations) [![Latest Unstable Version](https://poser.pugx.org/proai/laravel-pro-migrations/v/unstable)](https://packagist.org/packages/proai/laravel-pro-migrations) [![License](https://poser.pugx.org/proai/laravel-pro-migrations/license)](https://packagist.org/packages/proai/laravel-pro-migrations)
+[![Latest Stable Version](https://poser.pugx.org/proai/laravel-super-migrations/v/stable)](https://packagist.org/packages/proailaravel-super-migrations) [![Total Downloads](https://poser.pugx.org/proai/laravel-super-migrations/downloads)](https://packagist.org/packages/proai/laravel-super-migrations) [![Latest Unstable Version](https://poser.pugx.org/proai/laravel-super-migrations/v/unstable)](https://packagist.org/packages/proai/laravel-super-migrations) [![License](https://poser.pugx.org/proai/laravel-super-migrations/license)](https://packagist.org/packages/proai/laravel-super-migrations)
 
 This is an extension for the Laravel migrations. It is useful when you have a big database that results in a lot of migration files. This package will help you to reduce the number of migration files and furthermore it will give you a better structure with which you will have all schema updates for a table in one file.
 
@@ -9,7 +9,7 @@ This is an extension for the Laravel migrations. It is useful when you have a bi
 Laravel Pro Migrations is distributed as a composer package. So you first have to add the package to your `composer.json` file:
 
 ```
-"proai/laravel-pro-migrations": "~1.0"
+"proai/laravel-super-migrations": "~1.0"
 ```
 
 Then you have to run `composer update` to install the package.
@@ -20,12 +20,12 @@ Basically we don't define table builder schemas by migration, but by table. For 
 
 ### Migration classes
 
-Firstly here is a migration file in the `database/migrations` folder. Notice that we extend the `ProAI\ProMigrations\Migration` class. Instead of an `up()` and a `down()` method this class needs a `schemas()` method:
+Firstly here is a migration file in the `database/migrations` folder. Notice that we extend the `ProAI\SuperMigrations\Migration` class. Instead of an `up()` and a `down()` method this class needs a `schemas()` method:
 
 ```php
 <?php
 
-use ProAI\ProMigrations\Migration;
+use ProAI\SuperMigrations\Migration;
 
 class InitProject extends Migration
 {
@@ -61,7 +61,7 @@ The idea behind this is that one migration file includes all schemas for a whole
 
 ### Table classes
 
-For each tablename that is returned by the `schemas()` method Laravel Pro Migrations searches for a php file in `database/migrations/tables` with the same name (i.e. for the table `users` there must exist a file `users.php`). This file must contain a class that extends `ProAI\ProMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
+For each tablename that is returned by the `schemas()` method Laravel Pro Migrations searches for a php file in `database/migrations/tables` with the same name (i.e. for the table `users` there must exist a file `users.php`). This file must contain a class that extends `ProAI\SuperMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
 
 Furthermore for each of the migration specific names that we declared in the migration file, the table class must declare a method with the same name (i.e. a `create` method for the users table). Here is a sample users table class that fits to the migration class from the previous section:
 
@@ -69,7 +69,7 @@ Furthermore for each of the migration specific names that we declared in the mig
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use ProAI\ProMigrations\Table;
+use ProAI\SuperMigrations\Table;
 
 class UserTable extends Table
 {
@@ -93,7 +93,7 @@ class UserTable extends Table
 
 ```
 
-We use `$this->upSchema()` and `$this->downSchema()` to define the up and down schema. These methods return a `ProAI\ProMigrations\Builder` instance that is similar to the Laravel database schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument, because the tablename is already known.
+We use `$this->upSchema()` and `$this->downSchema()` to define the up and down schema. These methods return a `ProAI\SuperMigrations\Builder` instance that is similar to the Laravel database schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument, because the tablename is already known.
 
 ### Generator console commands
 
@@ -101,7 +101,7 @@ TODOC
 
 ## Support
 
-Bugs and feature requests are tracked on [GitHub](https://github.com/proai/laravel-pro-migrations/issues).
+Bugs and feature requests are tracked on [GitHub](https://github.com/proai/laravel-super-migrations/issues).
 
 ## License
 

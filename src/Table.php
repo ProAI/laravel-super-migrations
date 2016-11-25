@@ -1,8 +1,8 @@
 <?php
 
-namespace ProAI\ProMigrations;
+namespace ProAI\SuperMigrations;
 
-use ProAI\ProMigrations\Builder;
+use ProAI\SuperMigrations\Builder;
 
 abstract class Table
 {
@@ -16,7 +16,7 @@ abstract class Table
     /**
      * Pro migrations schema builder instance.
      *
-     * @var \ProAI\ProMigrations\Builder
+     * @var \ProAI\SuperMigrations\Builder
      */
     private $schema;
 
@@ -36,7 +36,7 @@ abstract class Table
     /**
      * Run the migrations.
      *
-     * @return \ProAI\ProMigrations\Builder
+     * @return \ProAI\SuperMigrations\Builder
      */
     protected function upSchema()
     {
