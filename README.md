@@ -30,7 +30,7 @@ use ProAI\ProMigrations\Migration;
 class InitProject extends Migration
 {
     /**
-     * Get class method names for up and down schemas.
+     * Get table names and related methods for up and down schemas.
      *
      * @return array
      */
