@@ -9,12 +9,16 @@ This is an extension for the Laravel migrations. It is useful if you have a big 
 Laravel Pro Migrations is distributed as a composer package. So you first have to add the package to your `composer.json` file:
 
 ```
-"proai/laravel-pro-migrations": "~1.0@dev"
+"proai/laravel-pro-migrations": "~1.0"
 ```
 
 Then you have to run `composer update` to install the package.
 
 ## Usage
+
+Basically we don't define table builder schemas by migration, but by table. For this purpose you need to create a `tables` folder in the `database/migrations` directory. For each table we will create a file in this new directory and link it in the migration files whereever needed. Here is a more detailed explanation:
+
+### Migration classes
 
 Firstly here is a migration file in the `database/migrations` folder. Notice that we extend the `ProAI\ProMigrations\Migration` class. Instead of an `up()` and a `down()` method this class needs a `schemas()` method:
 
@@ -52,7 +56,9 @@ return [
 
 ```
 
-For each tablename Laravel Pro Migrations searches for a file in `database\migrations\tables` with the same filename (i.e. for the table `users` there should exist a file `users.php`). This file must contain a class that extends `ProAI\ProMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
+### Table classes
+
+For each tablename Laravel Pro Migrations searches for a file in `database/migrations/tables` with the same filename (i.e. for the table `users` there should exist a file `users.php`). This file must contain a class that extends `ProAI\ProMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
 
 Do you remember that we specified names for each table for the schema in the migration class? For each of these names the table class must declare a method. Here is a sample table class that fits to the above migration class:
 
@@ -86,11 +92,11 @@ class UserTable extends Table
 
 Within each schema method you can use `$this->upSchema()` and `$this->downSchema` to define the up and down schema. These methods return a `ProAI\ProMigrations\Builder` instance that is similar to the standard Laravel schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument.
 
-That's it! This way you have less migration files, because of bundling multiple steps. And you have a good overview over all existing tables and all modifications of a table in the mapped table class.
+That's it!
 
-## Todo
+### Generator console commands
 
-- Add generator console commands
+TODOC
 
 ## Support
 
