@@ -103,7 +103,7 @@ We use `$this->upSchema()` and `$this->downSchema()` to define the up and down s
 
 ### Generator Command
 
-Run `php artisan make:migration:alt` to create a new migration class that fits to the super migrations pattern. You can declare a custom path with the `--path` option. Note that you have to include the service provider in order to use this command (see installation section).
+Run `php artisan make:migration:alt` to create a new migration class that fits to the pattern of this package. You can declare a custom path with the `--path` option. Note that you have to include the service provider in order to use this command (see installation section).
 
 ## Support
 
