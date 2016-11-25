@@ -1,4 +1,4 @@
-# Eloquent Versioning
+# Laravel Pro Migrations
 
 [![Latest Stable Version](https://poser.pugx.org/proai/laravel-pro-migrations/v/stable)](https://packagist.org/packages/proailaravel-pro-migrations) [![Total Downloads](https://poser.pugx.org/proai/laravel-pro-migrations/downloads)](https://packagist.org/packages/proai/laravel-pro-migrations) [![Latest Unstable Version](https://poser.pugx.org/proai/laravel-pro-migrations/v/unstable)](https://packagist.org/packages/proai/laravel-pro-migrations) [![License](https://poser.pugx.org/proai/laravel-pro-migrations/license)](https://packagist.org/packages/proai/laravel-pro-migrations)
 
