@@ -1,0 +1,27 @@
+{
+    "name": "proai/laravel-pro-migrations",
+    "description": "This Laravel package is useful for big databases for a better migrations structure.",
+    "keywords": ["laravel","migrations","database", "table"],
+    "homepage": "http://github.com/proai/laravel-pro-migrations",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Markus J. Wetzel",
+            "email": "markuswetzel@gmx.net"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/database": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ProAI\\ProMigrations\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
