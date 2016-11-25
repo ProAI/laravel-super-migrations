@@ -14,11 +14,17 @@ Laravel Super Migrations is distributed as a composer package. So you first have
 
 Then you have to run `composer update` to install the package.
 
+Only if you want to use the `make:migration:alt` command, you must add the service provider to the providers array in `config/app.php`:
+
+```
+'ProAI\SuperMigrations\SuperMigrationsServiceProvider'
+```
+
 ## Usage
 
 Basically we don't define table builder schemas by migration, but by table. For this purpose you need to create a `tables` folder in the `database/migrations` directory. For each table we will create a file in this new directory and link it in the migration files whereever needed. Here is a more detailed explanation:
 
-### Migration classes
+### Migration Classes
 
 Firstly here is a migration file in the `database/migrations` folder. Notice that we extend the `ProAI\SuperMigrations\Migration` class. Instead of an `up()` and a `down()` method this class needs a `schemas()` method:
 
@@ -59,7 +65,7 @@ return [
 
 The idea behind this is that one migration file includes all schemas for a whole update step rather than just for a table (i.e. one migration `InitProject` vs. multiple migrations `CreateUsersTable`, `CreateCommentsTable` etc.). This way you will have less migration files.
 
-### Table classes
+### Table Classes
 
 For each tablename that is returned by the `schemas()` method Laravel Super Migrations searches for a php file in `database/migrations/tables` with the same name (i.e. for the table `users` there must exist a file `users.php`). This file must contain a class that extends `ProAI\SuperMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
 
@@ -95,9 +101,9 @@ class UserTable extends Table
 
 We use `$this->upSchema()` and `$this->downSchema()` to define the up and down schema. These methods return a `ProAI\SuperMigrations\Builder` instance that is similar to the Laravel database schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument, because the tablename is already known.
 
-### Generator console commands
+### Generator Command
 
-TODOC
+Run `php artisan make:migration:alt` to create a new migration class that fits to the super migrations pattern. You can declare a custom path with the `--path` option. Note that you have to include the service provider in order to use this command (see installation section).
 
 ## Support
 
