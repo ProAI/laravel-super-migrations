@@ -1,4 +1,4 @@
-# Laravel Pro Migrations
+# Laravel Super Migrations
 
 [![Latest Stable Version](https://poser.pugx.org/proai/laravel-super-migrations/v/stable)](https://packagist.org/packages/proailaravel-super-migrations) [![Total Downloads](https://poser.pugx.org/proai/laravel-super-migrations/downloads)](https://packagist.org/packages/proai/laravel-super-migrations) [![Latest Unstable Version](https://poser.pugx.org/proai/laravel-super-migrations/v/unstable)](https://packagist.org/packages/proai/laravel-super-migrations) [![License](https://poser.pugx.org/proai/laravel-super-migrations/license)](https://packagist.org/packages/proai/laravel-super-migrations)
 
@@ -6,7 +6,7 @@ This is an extension for the Laravel migrations. It is useful when you have a bi
 
 ## Installation
 
-Laravel Pro Migrations is distributed as a composer package. So you first have to add the package to your `composer.json` file:
+Laravel Super Migrations is distributed as a composer package. So you first have to add the package to your `composer.json` file:
 
 ```
 "proai/laravel-super-migrations": "~1.0"
@@ -61,7 +61,7 @@ The idea behind this is that one migration file includes all schemas for a whole
 
 ### Table classes
 
-For each tablename that is returned by the `schemas()` method Laravel Pro Migrations searches for a php file in `database/migrations/tables` with the same name (i.e. for the table `users` there must exist a file `users.php`). This file must contain a class that extends `ProAI\SuperMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
+For each tablename that is returned by the `schemas()` method Laravel Super Migrations searches for a php file in `database/migrations/tables` with the same name (i.e. for the table `users` there must exist a file `users.php`). This file must contain a class that extends `ProAI\SuperMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
 
 Furthermore for each of the migration specific names that we declared in the migration file, the table class must declare a method with the same name (i.e. a `create` method for the users table). Here is a sample users table class that fits to the migration class from the previous section:
 
