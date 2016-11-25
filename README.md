@@ -37,16 +37,17 @@ class InitProject extends Migration
     public function schemas()
     {
         return [
-            'users' => 'create'
+            'users' => 'create',
+            'comments' => 'create'
         ];
     }
 }
 
 ```
 
-The `schemas()` method returns an array with tablenames and a related name for the schema.
+The `schemas()` method returns a list of all database tables that are affected by this migration (`users` and `comments` table in the example above). Since there can be more than one migration for a database table, we also need to assign a migration specific name for each table (i.e. `create` for the `users` and `comments` table).
 
-Hint: The class should be named after the update step and not any more after the table name. Also you can bundle migration steps within the `schemas()` method. Let's say we want to add a roles table and a column for the `role_id` in the users table, then the `schemas()` method could look like the following:
+With this pattern we can easily bundle schemas in one migration file. One more example: Let's say we want to add a roles table and a column for the `role_id` in the users table, then the `schemas()` method could look like the following:
 
 ```php
 return [
@@ -56,11 +57,13 @@ return [
 
 ```
 
+The idea behind this is that one migration file includes all schemas for a whole update step rather than just for a table (i.e. one migration `InitProject` vs. multiple migrations `CreateUsersTable`, `CreateCommentsTable` etc.). This way you will have less migration files.
+
 ### Table classes
 
-For each tablename Laravel Pro Migrations searches for a file in `database/migrations/tables` with the same filename (i.e. for the table `users` there should exist a file `users.php`). This file must contain a class that extends `ProAI\ProMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
+For each tablename that is returned by the `schemas()` method Laravel Pro Migrations searches for a php file in `database/migrations/tables` with the same name (i.e. for the table `users` there must exist a file `users.php`). This file must contain a class that extends `ProAI\ProMigrations\Table` and that is named after the table (in camel case) with a `Table` suffix. For example the classname must be `UsersTable` for a table `users`.
 
-Do you remember that we specified names for each table for the schema in the migration class? For each of these names the table class must declare a method. Here is a sample table class that fits to the above migration class:
+Furthermore for each of the migration specific names that we declared in the migration file, the table class must declare a method with the same name (i.e. a `create` method for the users table). Here is a sample users table class that fits to the migration class from the previous section:
 
 ```php
 <?php
@@ -90,9 +93,7 @@ class UserTable extends Table
 
 ```
 
-Within each schema method you can use `$this->upSchema()` and `$this->downSchema` to define the up and down schema. These methods return a `ProAI\ProMigrations\Builder` instance that is similar to the standard Laravel schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument.
-
-That's it!
+We use `$this->upSchema()` and `$this->downSchema()` to define the up and down schema. These methods return a `ProAI\ProMigrations\Builder` instance that is similar to the Laravel database schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument, because the tablename is already known.
 
 ### Generator console commands
 
