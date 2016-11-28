@@ -7,6 +7,13 @@ use ProAI\SuperMigrations\Builder;
 abstract class Table
 {
     /**
+     * The table associated with the schema.
+     *
+     * @var string
+     */
+    private $table;
+
+    /**
      * Direction of the migration (up or down).
      *
      * @var string
@@ -28,13 +35,40 @@ abstract class Table
      */
     public function __construct($table, $direction)
     {
+        $this->table = $table;
         $this->direction = $direction;
 
         $this->schema = new Builder($table);
     }
 
     /**
-     * Run the migrations.
+     * Execute a command if migration direction is up.
+     *
+     * @param  $command  \Closure
+     * @return void
+     */
+    protected function up($command)
+    {
+        if ($this->direction === 'up') {
+            $command($this->table);
+        }
+    }
+
+    /**
+     * Execute a command if migration direction is down.
+     *
+     * @param  $command  \Closure
+     * @return void
+     */
+    protected function down($command)
+    {
+        if ($this->direction === 'down') {
+            $command($this->table);
+        }
+    }
+
+    /**
+     * Get a schema builder instance if migration direction is up.
      *
      * @return \ProAI\SuperMigrations\Builder
      */
@@ -50,9 +84,9 @@ abstract class Table
     }
 
     /**
-     * Reverse the migrations.
+     * Get a schema builder instance if migration direction is up.
      *
-     * @return void
+     * @return \ProAI\SuperMigrations\Builder
      */
     protected function downSchema()
     {

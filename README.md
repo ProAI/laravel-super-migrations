@@ -76,6 +76,7 @@ Furthermore for each of the migration specific names that we declared in the mig
 
 use Illuminate\Database\Schema\Blueprint;
 use ProAI\SuperMigrations\Table;
+use Illuminate\Support\Facades\DB;
 
 class UserTable extends Table
 {
@@ -86,20 +87,29 @@ class UserTable extends Table
      */
     public function create()
     {
-        // migrations up
+        // These statements will be only executed if direction of migrations is up
         $this->upSchema()->create(function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
 
-        // migrations down
+        $this->up(function($tableName) {
+            DB::raw('ALTER TABLE `'.$tableName.'` ADD `client_id` BINARY(16)');
+        });
+
+
+        // These statements will be only executed if direction of migrations is down
         $this->downSchema()->dropIfExists();
+
+        $this->down(function($tableName) {
+            // some code
+        });
     }
 }
 
 ```
 
-We use `$this->upSchema()` and `$this->downSchema()` to define the up and down schema. These methods return a `ProAI\SuperMigrations\Builder` instance that is similar to the Laravel database schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument, because the tablename is already known.
+We use `$this->upSchema()` and `$this->downSchema()` to define the up and down schema. These methods return a `ProAI\SuperMigrations\Builder` instance that is similar to the Laravel database schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument, because the tablename is already known. Furthermore we use `$this->up(...)` and `$this->down(...)` to insert custom code like raw DB statements.
 
 ### Generator Command
 
