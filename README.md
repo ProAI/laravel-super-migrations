@@ -109,7 +109,7 @@ class UserTable extends Table
 
 ```
 
-We use `$this->upSchema()` and `$this->downSchema()` to define the up and down schema. These methods return a `ProAI\SuperMigrations\Builder` instance that is similar to the Laravel database schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument, because the tablename is already known. Furthermore we use `$this->up(...)` and `$this->down(...)` to insert custom code like raw DB statements.
+We use `$this->upSchema()` and `$this->downSchema()` to define the up and down schema. These methods return a `ProAI\SuperMigrations\Builder` instance that is similar to the Laravel database schema builder (see [Laravel docs](https://laravel.com/docs/5.3/migrations)). The only difference is that you don't need the tablename as first argument, because the tablename is already known. Furthermore we use `$this->up(...)` and `$this->down(...)` to insert custom code like raw DB statements (usually we don't need these methods).
 
 ### Generator Command
 
