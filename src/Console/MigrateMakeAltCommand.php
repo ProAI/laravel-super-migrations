@@ -13,7 +13,7 @@ class MigrateMakeAltCommand extends BaseCommand
      *
      * @var string
      */
-    protected $signature = 'make:migration:alt {name : The name of the migration.}
+    protected $signature = 'make:super-migration {name : The name of the migration.}
         {--path= : The location where the migration file should be created.}';
 
     /**

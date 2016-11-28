@@ -14,7 +14,7 @@ Laravel Super Migrations is distributed as a composer package. So you first have
 
 Then you have to run `composer update` to install the package.
 
-Only if you want to use the `make:migration:alt` command, you must add the service provider to the providers array in `config/app.php`:
+Only if you want to use the `make:super-migration` command, you must add the service provider to the providers array in `config/app.php`:
 
 ```
 'ProAI\SuperMigrations\SuperMigrationsServiceProvider'
@@ -103,7 +103,7 @@ We use `$this->upSchema()` and `$this->downSchema()` to define the up and down s
 
 ### Generator Command
 
-Run `php artisan make:migration:alt` to create a new migration class that fits to the pattern of this package. You can declare a custom path with the `--path` option. Note that you have to include the service provider in order to use this command (see installation section).
+Run `php artisan make:super-migration` to create a new migration class that fits to the pattern of this package. You can declare a custom path with the `--path` option. Note that you have to include the service provider in order to use this command (see installation section).
 
 ## Support
 
