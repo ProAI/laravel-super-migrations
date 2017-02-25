@@ -2,6 +2,8 @@
 
 namespace ProAI\SuperMigrations;
 
+use BadMethodCallException;
+
 class Builder
 {
     /**
@@ -79,7 +81,11 @@ class Builder
      */
     public function __call($method, $parameters)
     {
-        if (!$this->lock && in_array($method, $this->passthru)) {
+        if (! in_array($method, $this->passthru)) {
+            throw new BadMethodCallException("Method [$method] does not exist.");
+        }
+
+        if (! $this->lock) {
             array_unshift($parameters , $this->table);
 
             return call_user_func_array([$this->schema, $method], $parameters);
