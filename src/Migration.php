@@ -52,6 +52,10 @@ abstract class Migration extends BaseMigration
     protected function processSchemas()
     {
         $schemas = $this->schemas();
+        
+        if ($this->direction === 'down') {
+            $schemas = array_reverse($schemas);
+        }
 
         foreach ($schemas as $name => $method) {
             $schema = $this->getSchemaInstance($name);
