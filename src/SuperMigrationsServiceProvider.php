@@ -35,7 +35,7 @@ class SuperMigrationsServiceProvider extends ServiceProvider
     protected function registerCreator()
     {
         $this->app->singleton('migration.creator.alt', function ($app) {
-            return new MigrationCreator($app['files']);
+            return new MigrationCreator($app['files'], $app->basePath('stubs'));
         });
     }
 
