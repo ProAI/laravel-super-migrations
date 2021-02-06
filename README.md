@@ -9,7 +9,7 @@ This is an extension for the Laravel migrations. It is useful when you have a bi
 You can install the package via composer:
 
 ```bash
-composer require proai/laravel-struct
+composer require proai/laravel-super-migrations
 ```
 
 ## Usage
