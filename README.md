@@ -6,23 +6,15 @@ This is an extension for the Laravel migrations. It is useful when you have a bi
 
 ## Installation
 
-Laravel Super Migrations is distributed as a composer package. So you first have to add the package to your `composer.json` file:
+You can install the package via composer:
 
-```
-"proai/laravel-super-migrations": "~1.0"
-```
-
-Then you have to run `composer update` to install the package.
-
-Only if you want to use the `make:super-migration` command, you must add the service provider to the providers array in `config/app.php`:
-
-```
-'ProAI\SuperMigrations\SuperMigrationsServiceProvider'
+```bash
+composer require proai/laravel-struct
 ```
 
 ## Usage
 
-Basically we don't define table builder schemas by migration, but by table. For this purpose you need to create a `tables` folder in the `database/migrations` directory. For each table we will create a file in this new directory and link it in the migration files whereever needed. Here is a more detailed explanation:
+Basically we do not define table builder schemas by migration, but by table. For this purpose you need to create a `tables` folder in the `database/migrations` directory. For each table we will create a file in this new directory and link it in the migration files whereever needed. Here is a more detailed explanation:
 
 ### Migration Classes
 
