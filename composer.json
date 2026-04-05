@@ -1,29 +1,34 @@
 {
-    "name": "proai/laravel-super-migrations",
-    "description": "This Laravel package is useful for big databases for a better migrations structure.",
-    "keywords": ["laravel","migrations","database", "table"],
-    "homepage": "http://github.com/proai/laravel-super-migrations",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Markus J. Wetzel",
-            "email": "markuswetzel@gmx.net"
-        }
-    ],
-    "require": {
-        "php": "^8.0",
-        "illuminate/database": "^11.0||^12.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "ProAI\\SuperMigrations\\": "src/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "ProAI\\SuperMigrations\\SuperMigrationsServiceProvider"
-            ]
-        }
+  "name": "proai/laravel-super-migrations",
+  "description": "This Laravel package is useful for big databases for a better migrations structure.",
+  "keywords": [
+    "laravel",
+    "migrations",
+    "database",
+    "table"
+  ],
+  "homepage": "http://github.com/proai/laravel-super-migrations",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Markus J. Wetzel",
+      "email": "markuswetzel@gmx.net"
     }
+  ],
+  "require": {
+    "php": "^8.3",
+    "illuminate/database": "^12.0||^13.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ProAI\\SuperMigrations\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "ProAI\\SuperMigrations\\SuperMigrationsServiceProvider"
+      ]
+    }
+  }
 }
